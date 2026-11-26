@@ -87,6 +87,26 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 <div id="mn"><div id="sd"></div><div id="ct"></div></div>
 <div id="ft"></div><div id="ts"></div>
 <script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = 'https://tzkxujrjrhyqxgzytaex.supabase.co';
+
+const SUPABASE_KEY = 'sb_publishable_BrNnF8XCshRm1NmEYvQphg_hcNIJhQV';
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    {
+        auth: {
+            persistSession: true,
+            autoRefreshToken: true,
+            detectSessionInUrl: true
+        }
+    }
+);
+
+console.log('Apple Book: Supabase connected');
+</script>
 var S,me=null,R={p:'home'},CF=null,FT='f',AT='dash',AQ='',PF='all',STICKER_MODE=false;
 var OE='kago19235@gmail.com',OS='ab2-owner-7f3a91c2',OH='c616ac6b5e79ac5c2115606625ea30c1f5a13aebca6b323e042dd528ba73f4f3';
 var NF='all',MS=null,RP=null,ED=null,FW=null,LA=Date.now(),RLm={};
