@@ -45,7 +45,7 @@
   function ensureShell(){
     const head = $('#hi'), side = $('#sd'), main = $('#mn');
     if (!head || !main) return;
-    const brand=$('#lg'); if(brand && !brand.dataset.abxBrand){brand.dataset.abxBrand='1';brand.innerHTML='<img src="./assets/applebook-avatar-3d.png" alt=""/><span>apple<span style="font-weight:400;opacity:.88">book</span></span>';brand.setAttribute('aria-label','Apple Book');}
+    const brand=$('#lg'); if(brand && !brand.dataset.abxBrand){brand.dataset.abxBrand='1';brand.innerHTML='<img src="./assets/applebook-avatar-3d.png" alt="" style="width:28px;height:28px;object-fit:contain;border-radius:7px;flex:none;vertical-align:middle"/><span>apple<span style="font-weight:400;opacity:.88">book</span></span>';brand.setAttribute('aria-label','Apple Book');}
     if (!$('#abx-menu-button')) {
       const b=document.createElement('button'); b.id='abx-menu-button'; b.type='button'; b.setAttribute('aria-label','Открыть меню'); b.innerHTML=icon('menu'); b.addEventListener('click',toggleMenu); head.insertBefore(b,head.firstChild);
     }
