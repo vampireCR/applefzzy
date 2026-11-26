@@ -24,7 +24,13 @@
       id: p.id, name: d.displayName || p.username || p.handle || 'Member',
       username: p.username || '', handle: p.handle || '', bio: p.bio || d.bio || '',
       pic: d.pic || p.avatar_url || '', color: Number(d.color ?? 210), cov: Number(d.cov ?? 210),
-      role: ({ moderator: 'mod', admin: 'admin', head_admin: 'head', owner: 'owner' })[p.role] || 'user',
+      role: ({
+  moderator: 'mod',
+  admin: 'admin',
+  deputy_ceo: 'head',
+  ceo: 'ceo',
+  owner: 'owner'
+})[p.role] || 'user',
       state: d.accountState || 'ok', verified: Number(d.verified || 0), friends: [], reqs: [],
       blocked: [], views: Number(d.views || 0), joined: p.created_at ? new Date(p.created_at).getTime() : Date.now(),
       school: d.school || '', year: d.year || '', home: d.home || '', rel: d.rel || '', bday: d.bday || '',
@@ -268,7 +274,13 @@
   }
   async function setRankCloud(targetId) {
     const select = $('#rk' + targetId), requested = select ? select.value : '';
-    const roleMap = { user: 'member', mod: 'moderator', admin: 'admin', head: 'head_admin' }, dbRole = roleMap[requested];
+    const roleMap = {
+  user: 'member',
+  mod: 'moderator',
+  admin: 'admin',
+  head: 'deputy_ceo',
+  ceo: 'ceo'
+};, dbRole = roleMap[requested];
     if (!authUser || !dbRole) { say('Не удалось определить пользователя или новый ранг.'); return; }
     const { error } = await db.rpc('applebook_set_profile_role', { target_user_id: targetId, requested_role: dbRole });
     if (error) { console.error('Rank update failed:', error); say('Не удалось изменить ранг: ' + error.message); return; }
