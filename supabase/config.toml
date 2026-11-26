@@ -1,0 +1,2 @@
+[functions.applebook-admin]
+verify_jwt = true
